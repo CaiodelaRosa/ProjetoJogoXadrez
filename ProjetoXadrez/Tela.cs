@@ -3,7 +3,7 @@ using Tabuleiro_;
 
 namespace ProjetoXadrez
 {
-    internal class Tela
+    class Tela
     {
         public static void ImprimirTabuleiro(Tabuleiro Tab)
         {
@@ -17,7 +17,7 @@ namespace ProjetoXadrez
                     }
                     else
                     {
-                        Console.WriteLine($"{Tab.Peca(i, j)} ");
+                        Console.Write($"{Tab.Peca(i, j)} ");
                     }
                 }
                 Console.WriteLine();
