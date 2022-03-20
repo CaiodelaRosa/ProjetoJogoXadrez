@@ -12,6 +12,7 @@
             Posicao = posicao;
             Tab = tab;
             Cor = cor;
+            QtdMovimentos = 0;
         }
     }
 }
