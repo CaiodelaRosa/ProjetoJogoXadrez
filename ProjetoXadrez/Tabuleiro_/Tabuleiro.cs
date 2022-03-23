@@ -22,7 +22,7 @@ namespace Tabuleiro_
             return Pecas[linha,coluna];
         }
 
-        public Peca peca(Posicao pos)
+        public Peca Peca(Posicao pos)
         {
             return Pecas[pos.Linha, pos.Coluna];
         }
@@ -30,7 +30,7 @@ namespace Tabuleiro_
         public bool ExistePeca(Posicao pos)
         {
             ValidarPosicao(pos);
-            return peca(pos) != null;
+            return Peca(pos) != null;
         }
 
         public void ColocarPeca(Peca p, Posicao pos)
@@ -45,11 +45,11 @@ namespace Tabuleiro_
 
         public Peca RetirarPeca(Posicao pos)
         {
-            if (peca(pos) == null)
+            if (Peca(pos) == null)
             {
                 return null;
             }
-            Peca aux = peca(pos);
+            Peca aux = Peca(pos);
             aux.Posicao = null;
             Pecas[pos.Linha, pos.Coluna] = null;
             return aux;
