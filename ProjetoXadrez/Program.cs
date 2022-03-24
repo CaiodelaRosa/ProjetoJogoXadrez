@@ -16,10 +16,7 @@ namespace ProjetoXadrez
                     try
                     {
                         Console.Clear();
-                        Tela.ImprimirTabuleiro(partida.Tab);
-                        Console.WriteLine();
-                        Console.WriteLine($"Turno: {partida.Turno}");
-                        Console.WriteLine($"Aguardando jogada do jogador: {partida.JogadorAtual}");
+                        Tela.ImprimirPartida(partida);
 
                         Console.WriteLine();
                         Console.Write("Origem: ");
@@ -41,6 +38,11 @@ namespace ProjetoXadrez
                     catch (TabuleiroException ex)
                     {
                         Console.WriteLine(ex.Message);
+                        Console.ReadLine();
+                    }
+                    catch (Exception)
+                    {
+                        Console.WriteLine("Erro inesperado, tente novamente!");
                         Console.ReadLine();
                     }
                 }
