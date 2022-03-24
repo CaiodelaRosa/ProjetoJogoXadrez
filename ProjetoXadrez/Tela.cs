@@ -15,13 +15,22 @@ namespace ProjetoXadrez
             Console.WriteLine();
             Console.WriteLine($"Turno: {partida.Turno}");
             Console.WriteLine($"Aguardando jogada do jogador: {partida.JogadorAtual}");
-            if (partida.Xeque)
+           if (!partida.Terminada)
+            {
+                if (partida.Xeque)
+                {
+                    Console.WriteLine();
+                    Console.Write("XEQUE!");
+                    Console.WriteLine();
+                }
+            }
+            else
             {
                 Console.WriteLine();
-                Console.Write("XEQUE!");
+                Console.WriteLine("XEQUEMATE!!");
                 Console.WriteLine();
+                Console.WriteLine($"Vencedor: {partida.JogadorAtual}");
             }
-
         }
 
         public static void ImprimirPecasCapturadas(PartidaDeXadrez partida)
@@ -37,10 +46,20 @@ namespace ProjetoXadrez
 
         public static void ImprimirConjunto(HashSet<Peca> conjunto)
         {
+
+            int i = 0;
             Console.Write("[");
             foreach (Peca x in conjunto)
             {
-                Console.Write($"{x}, ");
+                if (i == 0)
+                {
+                    Console.Write($"{x}");
+                }
+                else
+                {
+                    Console.Write($", {x}");
+                }
+                i++;
             }
             Console.Write("]");
                 
@@ -126,7 +145,7 @@ namespace ProjetoXadrez
                 else
                 {
                     ConsoleColor aux = Console.ForegroundColor;
-                    Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                    Console.ForegroundColor = ConsoleColor.DarkBlue;
                     Console.Write(peca);
                     Console.ForegroundColor = aux;
                 }
