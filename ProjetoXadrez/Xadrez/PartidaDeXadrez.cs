@@ -143,6 +143,51 @@ namespace Xadrez
                 throw new TabuleiroException("Você não pode se colocar em xeque!");
             }
 
+            //Jogada especial promocao
+            Peca promo = Tab.Peca(destino);
+            if (promo is Peao)
+            {
+                if ((promo.Cor == Cor.Branca && destino.Linha == 0) || (promo.Cor == Cor.Preta && destino.Linha == 7))
+                {
+                    Console.WriteLine("Promoção de peão!!!");
+                    Console.Write("Selecione uma peça (D/T/C/B: ");
+                    char pp = char.Parse(Console.ReadLine());
+                    if (pp == 'D')
+                    {
+                        promo = Tab.RetirarPeca(destino);
+                        Pecas.Remove(promo);
+                        Peca dama = new Dama(Tab, promo.Cor);
+                        Tab.ColocarPeca(dama, destino);
+                    }
+                    else if (pp == 'T')
+                    {
+                        promo = Tab.RetirarPeca(destino);
+                        Pecas.Remove(promo);
+                        Peca torre = new Torre(Tab, promo.Cor);
+                        Tab.ColocarPeca(torre, destino);
+                    }
+                    else if (pp == 'B')
+                    {
+                        promo = Tab.RetirarPeca(destino);
+                        Pecas.Remove(promo);
+                        Peca bispo = new Bispo(Tab, promo.Cor);
+                        Tab.ColocarPeca(bispo, destino);
+                    }
+                    else if (pp == 'C')
+                    {
+                        promo = Tab.RetirarPeca(destino);
+                        Pecas.Remove(promo);
+                        Peca cavalo = new Cavalo(Tab, promo.Cor);
+                        Tab.ColocarPeca(cavalo, destino);
+                    }
+                    else
+                    {
+                        throw new TabuleiroException("Opção inválida!");
+                    }
+                }
+            }
+
+            // Testa adversario em xeque
             if (EmXeque(Adversaria(JogadorAtual)))
             {
                 Xeque = true;
